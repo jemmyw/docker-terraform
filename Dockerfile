@@ -2,10 +2,10 @@ FROM alpine:3.3
 MAINTAINER Jeremy Wells <jemmyw@gmail.com>
 
 RUN apk update && apk upgrade && apk add zip ca-certificates curl
-ENV VERSION 0.7.5
+ENV VERSION 0.7.6
 
-RUN curl https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip > /terraform_${VERSION}_linux_amd64.zip
-RUN unzip /terraform_${VERSION}_linux_amd64.zip -d /usr/bin \
+ADD linux_amd64.zip /
+RUN unzip /linux_amd64.zip -d /usr/bin \
     && rm /*.zip \
     && mkdir /app
 
